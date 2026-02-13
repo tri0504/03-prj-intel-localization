@@ -1,0 +1,203 @@
+/* Base page styles for consistent sizing */
+* {
+	/* Include padding and border in element width calculations */
+	box-sizing: border-box;
+}
+
+body {
+	/* Remove default browser spacing */
+	margin: 0;
+	/* Friendly, readable font stack */
+	font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+	/* Deep navy text for strong contrast */
+	color: #0b1f33;
+	/* Soft light-blue background for the page */
+	background-color: #f5f8fb;
+}
+
+/* Intel-branded hero area */
+.hero {
+	/* Blue gradient banner at the top */
+	background: linear-gradient(90deg, #149ad6, #0071c5, #005aa3);
+	/* White text on the dark background */
+	color: #ffffff;
+	/* Space inside the hero section */
+	padding: 56px 20px 64px;
+}
+
+.hero-content {
+	/* Limit line length and center the content block */
+	max-width: 900px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.hero-logo {
+	/* Scale the logo and center it */
+	width: 140px;
+	height: auto;
+	display: block;
+	margin: 0 auto 18px;
+}
+
+.hero-title {
+	/* Big headline text */
+	margin: 0 0 12px;
+	font-size: 2.5rem;
+	letter-spacing: 0.5px;
+}
+
+.hero-subtitle {
+	/* Supporting text under the headline */
+	margin: 0;
+	font-size: 1.1rem;
+	line-height: 1.6;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Helpful spacing for the rest of the page */
+section {
+	/* Constrain width and center the timeline section */
+	max-width: 1000px;
+	margin: 40px auto 24px;
+	padding: 8px 20px 12px;
+	/* Flexbox keeps cards in a row so they can scroll horizontally */
+	display: flex;
+	/* Gap between cards */
+	gap: 16px;
+	align-items: flex-start;
+	/* Allow horizontal scrolling for smaller screens */
+	overflow-x: auto;
+	overflow-y: visible;
+	/* Snap to each card while scrolling */
+	scroll-snap-type: x mandatory;
+	scroll-padding-right: 20px;
+	/* Prevent parent page from scrolling sideways */
+	overscroll-behavior-x: contain;
+	/* Hide scrollbar in Firefox */
+	scrollbar-width: none;
+}
+
+section::-webkit-scrollbar {
+	/* Hide scrollbar in Chrome/Safari */
+	display: none;
+}
+
+/* Timeline cards */
+section > div {
+	/* Fixed card width in the row */
+	flex: 0 0 calc((100% - 48px) / 4);
+	min-width: 220px;
+	/* White card background */
+	background-color: #ffffff;
+	/* Inner spacing and rounded corners */
+	padding: 16px;
+	border-radius: 10px;
+	/* Soft shadow for depth */
+	box-shadow: 0 6px 14px rgba(11, 31, 51, 0.12);
+	/* Snap each card to the start of the scroll */
+	scroll-snap-align: start;
+	/* Flex items fill available height for a tidy row */
+	display: flex;
+	flex-direction: column;
+	/* Light border to define the card edge */
+	border: 1px solid #d7e3f1;
+	/* Smooth hover animation */
+	transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+	/* Needed for the hover overlay */
+	position: relative;
+	overflow: hidden;
+}
+
+/* Milestone text styles */
+section > div h2 {
+	/* Year label styling */
+	margin: 0 0 6px;
+	font-size: 1.4rem;
+	color: #0071c5;
+}
+
+section > div h3 {
+	/* Milestone title styling */
+	margin: 0 0 10px;
+	font-size: 1.05rem;
+	color: #0b1f33;
+}
+
+/* Milestone images */
+.milestone-image {
+	/* Make images fill the card width */
+	width: 100%;
+	height: auto;
+	/* Rounded image corners and subtle border */
+	border-radius: 8px;
+	margin: 6px 0 12px;
+	border: 1px solid #d7e3f1;
+}
+
+section > div p {
+	/* Card body text styling */
+	margin: 0;
+	color: #334e68;
+	line-height: 1.5;
+}
+
+/* Extra details appear on hover */
+section > div .more {
+	/* Full-card overlay that still lets the image show through. */
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/* Light overlay background */
+	background-color: rgba(238, 246, 253, 0.95);
+	color: #0b1f33;
+	/* Padding inside the overlay */
+	padding: 18px;
+	border-radius: 10px;
+	/* Hidden by default */
+	opacity: 0;
+	transform: translateY(8px);
+	/* Prevent clicks until visible */
+	pointer-events: none;
+	/* Smooth fade-in */
+	transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+
+section > div:hover .more {
+	/* Reveal the overlay on hover */
+	opacity: 1;
+	transform: translateY(0);
+}
+
+section > div:hover {
+	/* Lift and highlight the card on hover */
+	transform: translateY(-4px);
+	box-shadow: 0 12px 24px rgba(11, 31, 51, 0.2);
+	border-color: #00a3e0;
+}
+
+p {
+	/* Center the intro paragraph under the cards */
+	margin: 16px 20px 40px;
+	text-align: center;
+	color: #334e68;
+}
+
+/* Stack cards on smaller screens */
+@media (max-width: 700px) {
+	section {
+		/* Switch back to a vertical stack on small screens */
+		display: block;
+	}
+
+	section > div {
+		/* Full-width cards with spacing */
+		min-width: 0;
+		margin-bottom: 16px;
+	}
+}
