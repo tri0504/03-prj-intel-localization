@@ -57,8 +57,8 @@ body {
 	margin-right: auto;
 }
 
-/* Helpful spacing for the rest of the page */
-section {
+/* Helpful spacing for the timeline section */
+section.timeline {
 	/* Constrain width and center the timeline section */
 	max-width: 1000px;
 	margin: 40px auto 24px;
@@ -80,13 +80,13 @@ section {
 	scrollbar-width: none;
 }
 
-section::-webkit-scrollbar {
+section.timeline::-webkit-scrollbar {
 	/* Hide scrollbar in Chrome/Safari */
 	display: none;
 }
 
 /* Timeline cards */
-section > div {
+section.timeline > div {
 	/* Fixed card width in the row */
 	flex: 0 0 calc((100% - 48px) / 4);
 	min-width: 220px;
@@ -112,14 +112,14 @@ section > div {
 }
 
 /* Milestone text styles */
-section > div h2 {
+section.timeline > div h2 {
 	/* Year label styling */
 	margin: 0 0 6px;
 	font-size: 1.4rem;
 	color: #0071c5;
 }
 
-section > div h3 {
+section.timeline > div h3 {
 	/* Milestone title styling */
 	margin: 0 0 10px;
 	font-size: 1.05rem;
@@ -137,7 +137,7 @@ section > div h3 {
 	border: 1px solid #d7e3f1;
 }
 
-section > div p {
+section.timeline > div p {
 	/* Card body text styling */
 	margin: 0;
 	color: #334e68;
@@ -145,7 +145,7 @@ section > div p {
 }
 
 /* Extra details appear on hover */
-section > div .more {
+section.timeline > div .more {
 	/* Full-card overlay that still lets the image show through. */
 	position: absolute;
 	top: 0;
@@ -158,6 +158,8 @@ section > div .more {
 	/* Padding inside the overlay */
 	padding: 18px;
 	border-radius: 10px;
+	/* RTL-compatible text alignment for right-to-left languages */
+	text-align: right;
 	/* Hidden by default */
 	opacity: 0;
 	transform: translateY(8px);
@@ -168,13 +170,13 @@ section > div .more {
 }
 
 
-section > div:hover .more {
+section.timeline > div:hover .more {
 	/* Reveal the overlay on hover */
 	opacity: 1;
 	transform: translateY(0);
 }
 
-section > div:hover {
+section.timeline > div:hover {
 	/* Lift and highlight the card on hover */
 	transform: translateY(-4px);
 	box-shadow: 0 12px 24px rgba(11, 31, 51, 0.2);
@@ -188,14 +190,289 @@ p {
 	color: #334e68;
 }
 
+/* RTL text alignment for Bootstrap card content */
+.card-text {
+	/* Right-align text in cards for RTL language support */
+	text-align: right;
+}
+
+/* Newsletter form styling */
+.newsletter-section {
+	/* Intel blue gradient background */
+	background: linear-gradient(135deg, #0071c5, #149ad6);
+	/* Spacing around section */
+	padding: 80px 20px;
+	/* Smooth appearance */
+	margin: 60px 0;
+}
+
+.newsletter-content {
+	/* Center content and add max-width */
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.newsletter-title {
+	/* Large, bold heading */
+	font-size: 2rem;
+	color: #ffffff;
+	margin-bottom: 16px;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+}
+
+.newsletter-description {
+	/* Support text styling */
+	font-size: 1.1rem;
+	color: rgba(255, 255, 255, 0.9);
+	margin-bottom: 32px;
+	line-height: 1.6;
+}
+
+.newsletter-form {
+	/* Form layout and spacing */
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.form-group {
+	/* Input wrapper */
+	flex: 1 1 auto;
+	min-width: 250px;
+	margin-bottom: 0;
+}
+
+.newsletter-input {
+	/* Polished input field */
+	width: 100%;
+	background-color: #ffffff;
+	border: none;
+	border-radius: 6px;
+	padding: 14px 16px;
+	font-size: 1rem;
+	color: #0b1f33;
+	transition: box-shadow 0.3s ease;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-input::placeholder {
+	/* Placeholder styling */
+	color: #999;
+}
+
+.newsletter-input:focus {
+	/* Focus state with outline */
+	outline: none;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter-btn {
+	/* Polished button styling */
+	background-color: #ffffff;
+	color: #0071c5;
+	border: none;
+	border-radius: 6px;
+	padding: 14px 32px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	white-space: nowrap;
+	min-width: 160px;
+}
+
+.newsletter-btn:hover {
+	/* Hover state */
+	background-color: #f0f4f8;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter-btn:active {
+	/* Active state */
+	transform: translateY(0);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+	.newsletter-section {
+		/* Reduce padding on small screens */
+		padding: 60px 16px;
+	}
+
+	.newsletter-title {
+		/* Smaller heading on mobile */
+		font-size: 1.6rem;
+	}
+
+	.newsletter-description {
+		/* Smaller text on mobile */
+		font-size: 1rem;
+	}
+
+	.newsletter-form {
+		/* Stack form elements on mobile */
+		flex-direction: column;
+	}
+
+	.form-group {
+		/* Full width on mobile */
+		flex: 1 1 100%;
+		min-width: unset;
+	}
+
+	.newsletter-btn {
+		/* Full width button on mobile */
+		width: 100%;
+	}
+}
+
+/* Footer Section Styling */
+.footer {
+	/* Dark background for footer */
+	background-color: #0b1f33;
+	color: #ffffff;
+	/* Top margin space from content */
+	margin-top: 80px;
+	/* Inner padding */
+	padding: 60px 20px 40px;
+}
+
+.footer-section {
+	/* Spacing between footer columns */
+	margin-bottom: 40px;
+}
+
+.footer-title {
+	/* Footer section headings */
+	font-size: 1.15rem;
+	font-weight: 600;
+	color: #149ad6;
+	margin-bottom: 16px;
+	letter-spacing: 0.5px;
+}
+
+.footer-text {
+	/* Footer paragraph text */
+	font-size: 0.95rem;
+	color: rgba(255, 255, 255, 0.85);
+	line-height: 1.6;
+	margin-bottom: 0;
+	/* RTL-compatible right alignment */
+	text-align: right;
+}
+
+.footer-links {
+	/* Footer navigation list */
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.footer-links li {
+	/* List item spacing */
+	margin-bottom: 12px;
+}
+
+.footer-links a {
+	/* Footer link styling */
+	color: rgba(255, 255, 255, 0.85);
+	text-decoration: none;
+	font-size: 0.95rem;
+	transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+	/* Link hover state */
+	color: #149ad6;
+	text-decoration: underline;
+}
+
+.footer-contact-link {
+	/* Inline contact link */
+	color: #149ad6;
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.3s ease;
+}
+
+.footer-contact-link:hover {
+	/* Contact link hover */
+	color: #00a3e0;
+	text-decoration: underline;
+}
+
+.footer-bottom {
+	/* Bottom divider and copyright */
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	padding-top: 30px;
+	margin-top: 40px;
+}
+
+.copyright {
+	/* Copyright text styling */
+	font-size: 0.9rem;
+	color: rgba(255, 255, 255, 0.7);
+	margin: 0;
+	text-align: center;
+	line-height: 1.6;
+}
+
+.copyright a {
+	/* Links in copyright */
+	color: #149ad6;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.copyright a:hover {
+	/* Copyright link hover */
+	color: #00a3e0;
+	text-decoration: underline;
+}
+
+/* Footer responsive design */
+@media (max-width: 768px) {
+	.footer {
+		/* Less padding on mobile */
+		padding: 40px 16px 30px;
+		margin-top: 60px;
+	}
+
+	.footer-section {
+		/* Less spacing between sections on mobile */
+		margin-bottom: 30px;
+	}
+
+	.footer-title {
+		/* Slightly smaller heading on mobile */
+		font-size: 1.05rem;
+	}
+
+	.footer-text {
+		/* Smaller text on mobile */
+		font-size: 0.9rem;
+	}
+
+	.copyright {
+		/* Smaller copyright text on mobile */
+		font-size: 0.85rem;
+	}
+}
+
 /* Stack cards on smaller screens */
 @media (max-width: 700px) {
-	section {
+	section.timeline {
 		/* Switch back to a vertical stack on small screens */
 		display: block;
 	}
 
-	section > div {
+	section.timeline > div {
 		/* Full-width cards with spacing */
 		min-width: 0;
 		margin-bottom: 16px;
