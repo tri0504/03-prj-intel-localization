@@ -57,6 +57,15 @@ body {
 	margin-right: auto;
 }
 
+/* Timeline heading to introduce the section */
+.timeline-title {
+	/* Center the section title */
+	text-align: center;
+	margin: 48px 20px 12px;
+	font-size: 2rem;
+	color: #0b1f33;
+}
+
 /* Helpful spacing for the timeline section */
 section.timeline {
 	/* Constrain width and center the timeline section */
@@ -71,9 +80,13 @@ section.timeline {
 	/* Allow horizontal scrolling for smaller screens */
 	overflow-x: auto;
 	overflow-y: visible;
-	/* Snap to each card while scrolling */
-	scroll-snap-type: x mandatory;
-	scroll-padding-right: 20px;
+	/* Snap to each card while scrolling (respects RTL) */
+	scroll-snap-type: inline mandatory;
+	scroll-padding-inline: 20px;
+	/* Smooth scrolling for mouse and touch */
+	scroll-behavior: smooth;
+	/* Match the page direction (LTR or RTL) */
+	direction: inherit;
 	/* Prevent parent page from scrolling sideways */
 	overscroll-behavior-x: contain;
 	/* Hide scrollbar in Firefox */
@@ -112,14 +125,14 @@ section.timeline > div {
 }
 
 /* Milestone text styles */
-section.timeline > div h2 {
+section.timeline > div h3 {
 	/* Year label styling */
 	margin: 0 0 6px;
 	font-size: 1.4rem;
 	color: #0071c5;
 }
 
-section.timeline > div h3 {
+section.timeline > div h4 {
 	/* Milestone title styling */
 	margin: 0 0 10px;
 	font-size: 1.05rem;
@@ -158,8 +171,8 @@ section.timeline > div .more {
 	/* Padding inside the overlay */
 	padding: 18px;
 	border-radius: 10px;
-	/* RTL-compatible text alignment for right-to-left languages */
-	text-align: right;
+	/* Align with the page direction */
+	text-align: start;
 	/* Hidden by default */
 	opacity: 0;
 	transform: translateY(8px);
@@ -190,10 +203,9 @@ p {
 	color: #334e68;
 }
 
-/* RTL text alignment for Bootstrap card content */
+/* Align card text with the page direction */
 .card-text {
-	/* Right-align text in cards for RTL language support */
-	text-align: right;
+	text-align: start;
 }
 
 /* Newsletter form styling */
@@ -211,6 +223,34 @@ p {
 	max-width: 600px;
 	margin: 0 auto;
 	text-align: center;
+}
+
+/* RTL adjustments for text blocks that should align right */
+html[dir="rtl"] .card-title,
+html[dir="rtl"] .card-text,
+html[dir="rtl"] .newsletter-title,
+html[dir="rtl"] .newsletter-description,
+html[dir="rtl"] .footer-title,
+html[dir="rtl"] .footer-text,
+html[dir="rtl"] .footer-links,
+html[dir="rtl"] .copyright {
+	text-align: right;
+}
+
+html[dir="rtl"] .footer-links {
+	padding-right: 0;
+}
+
+html[dir="rtl"] .newsletter-input {
+	/* Keep the placeholder and text starting on the right */
+	text-align: right;
+	direction: rtl;
+}
+
+html[dir="ltr"] .newsletter-input {
+	/* Keep the placeholder and text starting on the left */
+	text-align: left;
+	direction: ltr;
 }
 
 .newsletter-title {
@@ -254,6 +294,9 @@ p {
 	padding: 14px 16px;
 	font-size: 1rem;
 	color: #0b1f33;
+	/* Align with the page direction */
+	text-align: start;
+	direction: inherit;
 	transition: box-shadow 0.3s ease;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -261,6 +304,8 @@ p {
 .newsletter-input::placeholder {
 	/* Placeholder styling */
 	color: #999;
+	text-align: inherit;
+	direction: inherit;
 }
 
 .newsletter-input:focus {
@@ -343,9 +388,20 @@ p {
 	padding: 60px 20px 40px;
 }
 
+.footer .row {
+	/* Keep columns aligned and balanced */
+	align-items: flex-start;
+}
+
 .footer-section {
 	/* Spacing between footer columns */
 	margin-bottom: 40px;
+	/* Keep footer content aligned with page direction */
+	text-align: start;
+	/* Consistent spacing inside each column */
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .footer-title {
@@ -353,7 +409,7 @@ p {
 	font-size: 1.15rem;
 	font-weight: 600;
 	color: #149ad6;
-	margin-bottom: 16px;
+	margin: 0;
 	letter-spacing: 0.5px;
 }
 
@@ -362,9 +418,9 @@ p {
 	font-size: 0.95rem;
 	color: rgba(255, 255, 255, 0.85);
 	line-height: 1.6;
-	margin-bottom: 0;
-	/* RTL-compatible right alignment */
-	text-align: right;
+	margin: 0;
+	/* Align with the page direction */
+	text-align: start;
 }
 
 .footer-links {
@@ -372,17 +428,20 @@ p {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	text-align: start;
 }
 
 .footer-links li {
 	/* List item spacing */
-	margin-bottom: 12px;
+	margin-bottom: 10px;
+	text-align: start;
 }
 
 .footer-links a {
 	/* Footer link styling */
 	color: rgba(255, 255, 255, 0.85);
-	text-decoration: none;
+	text-decoration: underline;
+	text-underline-offset: 2px;
 	font-size: 0.95rem;
 	transition: color 0.3s ease;
 }
@@ -396,7 +455,8 @@ p {
 .footer-contact-link {
 	/* Inline contact link */
 	color: #149ad6;
-	text-decoration: none;
+	text-decoration: underline;
+	text-underline-offset: 2px;
 	font-weight: 500;
 	transition: color 0.3s ease;
 }
@@ -426,7 +486,8 @@ p {
 .copyright a {
 	/* Links in copyright */
 	color: #149ad6;
-	text-decoration: none;
+	text-decoration: underline;
+	text-underline-offset: 2px;
 	transition: color 0.3s ease;
 }
 
